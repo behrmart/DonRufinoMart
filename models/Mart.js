@@ -7,7 +7,12 @@ const knex = require('../config')
 
 // Paso 2. Crear una funcion que traiga los datos que yo requiera de la DB
 
-
+const createProduct = (body) => {
+    return knex
+    .insert(body)
+    .into('products')
+    .returning('*')
+}
 
 const findAllProducts = () => {
     return knex
@@ -30,7 +35,7 @@ const findOneProduct = (produtId) => {
 const destroyProduct = (productId) => {
     return knex
     .del()
-    .from('product')
+    .from('products')
     .where('product_id', productId)
 }
 
@@ -39,7 +44,7 @@ const destroyProduct = (productId) => {
 const  softDeleteProduct = (productId) => {
     return knex
     .update({active: false})
-    .from('product')
+    .from('products')
     .where ('product_id', productId)
 }
 
@@ -47,6 +52,7 @@ const  softDeleteProduct = (productId) => {
 // Paso 4 exportar el modelo para que sean accesibles desde el controlador
 
 module.exports = {
+    createProduct,
     findAllProducts,
     findOneProduct,
     destroyProduct,

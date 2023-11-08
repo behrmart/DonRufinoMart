@@ -3,6 +3,17 @@ const ModelMart = require('../models/Mart')
 
 
 
+const createProduct = (req, res) => {
+    ModelMart.createProduct(req.body)
+    .then(rows => {
+        res.status(201).send({ message: 'Product Created', data: rows})
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error Creating Product', err})
+        console.log(err)
+    })
+}
+
 const findAllProducts = (req, res) => {
     ModelMart.findAllProducts()
     .then(rows => {
@@ -30,23 +41,24 @@ const destroyProduct = (req, res) => {
         res.status(204).send()
     })
     .catch (err => {
-        res.status(400).send({message:'Error Destroy One home'})
+        res.status(400).send({message:'Error Destroy One product'})
     })
 }
 
 const softDeleteProduct = (req, res) => {
-    ModelMart.softDeleteProduct(req.params.idHome)
+    ModelMart.softDeleteProduct(req.params.idProduct)
     .then(row => {
         res.status(204).send()
     })
     .catch (err => {
-        res.status(400).send({message:'Error soft Delete One home'})
+        res.status(400).send({message:'Error softDelete one product'})
+        //console.log (err)
     })
 }
 
 
 module.exports = {
-    
+    createProduct,
     findAllProducts,
     findOneProduct,
   
