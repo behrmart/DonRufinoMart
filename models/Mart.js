@@ -14,6 +14,14 @@ const createProduct = (body) => {
     .returning('*')
 }
 
+const modifyProduct = (productId, body) => {
+    return knex
+    .update(body)
+    .from('products')
+    .where('product_id', productId)
+    .returning('*')
+}
+
 const findAllProducts = () => {
     return knex
     .select('*')
@@ -21,11 +29,11 @@ const findAllProducts = () => {
     .where ('active', true) //traemos los campos que no haya hecho un soft delete
 }
 
-const findOneProduct = (produtId) => {
+const findOneProduct = (productId) => {
     return knex
     .select('*')
     .from('products')
-    .where ('product_id', produtId)
+    .where ('product_id', productId)
     .where ('active', true) // y ademans traemos los campos que no haya hecho un soft delete
     .first()
 }
@@ -53,6 +61,7 @@ const  softDeleteProduct = (productId) => {
 
 module.exports = {
     createProduct,
+    modifyProduct,
     findAllProducts,
     findOneProduct,
     destroyProduct,

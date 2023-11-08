@@ -12,6 +12,7 @@ const martController = require('../controllers/martController')
 //router.delete ('/mart/destroy/:idMart', martController.destroyOneMart)
 
 router.post ('/products', martController.createProduct)
+router.patch ('/products/:idProduct', martController.modifyProduct)
 router.get ('/products', martController.findAllProducts)
 router.get ('/products/:idProduct', martController.findOneProduct)
 router.delete ('/products/:idProduct', martController.softDeleteProduct)

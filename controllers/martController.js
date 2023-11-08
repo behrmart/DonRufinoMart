@@ -14,6 +14,17 @@ const createProduct = (req, res) => {
     })
 }
 
+const modifyProduct = (req, res) => {
+    ModelMart.modifyProduct(req.params.idProduct, req.body)
+    .then(rows => {
+        res.status(201).send({ message: 'Product updated', data: rows})
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error Updating Product', err})
+        console.log(err)
+    })
+}
+
 const findAllProducts = (req, res) => {
     ModelMart.findAllProducts()
     .then(rows => {
@@ -59,6 +70,7 @@ const softDeleteProduct = (req, res) => {
 
 module.exports = {
     createProduct,
+    modifyProduct,
     findAllProducts,
     findOneProduct,
   
