@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const martController = require('../controllers/martController')
 const clientController = require ('../controllers/clientController')
+const tienditasController = require ('../controllers/tienditasController')
 
 //  VISTA
 
@@ -20,6 +21,10 @@ router.get ('/clients', clientController.findAllClients)
 router.get ('/clients/:idClient', clientController.findOneClient)
 router.delete ('/clients/:idClient', clientController.softDeleteClient)
 router.delete ('/clients/destroy/:idClient', clientController.destroyClient)
+
+//Tienditas endpoints
+//router.post ('/tienditas', tienditasController.createTiendita)
+router.get ('/tienditas', tienditasController.findAllTienditas)
 
 
 module.exports = router
