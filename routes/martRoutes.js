@@ -14,6 +14,12 @@ router.delete ('/products/:idProduct', martController.softDeleteProduct)
 router.delete ('/products/destroy/:idProduct', martController.destroyProduct)
 
 //Client endpoints
+router.post ('/clients', clientController.createClient)
+router.patch ('/clients/:idClient', clientController.modifyClient)
 router.get ('/clients', clientController.findAllClients)
+router.get ('/clients/:idClient', clientController.findOneClient)
+router.delete ('/clients/:idClient', clientController.softDeleteClient)
+router.delete ('/clients/destroy/:idClient', clientController.destroyClient)
+
 
 module.exports = router

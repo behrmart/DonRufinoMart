@@ -73,7 +73,6 @@ module.exports = {
     modifyProduct,
     findAllProducts,
     findOneProduct,
-  
     destroyProduct,
     softDeleteProduct
 }
