@@ -10,6 +10,17 @@ const findAllTienditas = (req, res) => {
     })
 }
 
+const findOneTiendita = (req, res) => {
+    ModelTienditas.findOneTiendita(req.params.idTiendita)
+    .then(row => {
+        res.status(200).send(row)
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error finding Tiendita'})
+    })
+}
+
 module.exports = {
-    findAllTienditas
+    findAllTienditas,
+    findOneTiendita
 }
