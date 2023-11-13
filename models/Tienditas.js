@@ -16,7 +16,16 @@ const findOneTiendita = (tienditaId) => {
     .where ('active', true) // y ademans traemos los campos que no haya hecho un soft delete
     .first()
 }
+
+const createTiendita = (body) => {
+    return knex
+    .insert(body)
+    .into('tienditas')
+    .returning ('*')
+}
+
 module.exports = {
     findAllTienditas,
-    findOneTiendita
+    findOneTiendita,
+    createTiendita
 }

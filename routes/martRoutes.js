@@ -26,6 +26,6 @@ router.delete ('/clients/destroy/:idClient', clientController.destroyClient)
 //router.post ('/tienditas', tienditasController.createTiendita)
 router.get ('/tienditas', tienditasController.findAllTienditas)
 router.get ('/tienditas/:idTiendita', tienditasController.findOneTiendita)
-
+router.post ('/tienditas', tienditasController.createTiendita)
 
 module.exports = router

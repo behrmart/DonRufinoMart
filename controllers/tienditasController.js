@@ -20,7 +20,18 @@ const findOneTiendita = (req, res) => {
     })
 }
 
+const createTiendita = (req, res) => {
+    ModelTienditas.createTiendita(req.body)
+    .then(rows => {
+        res.status(200).send(rows)
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error creating Tiendita'})
+    })
+}
+
 module.exports = {
     findAllTienditas,
-    findOneTiendita
+    findOneTiendita,
+    createTiendita
 }
