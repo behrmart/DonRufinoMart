@@ -24,8 +24,17 @@ const createTiendita = (body) => {
     .returning ('*')
 }
 
+const modifyTiendita = (tienditaId, body) => {
+    return knex
+    .update(body)
+    .from('tienditas')
+    .where('tiendita_id', tienditaId)
+    .returning('*')
+}
+
 module.exports = {
     findAllTienditas,
     findOneTiendita,
-    createTiendita
+    createTiendita,
+    modifyTiendita
 }

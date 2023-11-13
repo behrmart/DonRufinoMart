@@ -30,8 +30,19 @@ const createTiendita = (req, res) => {
     })
 }
 
+const modifyTiendita = (req, res) => {
+    ModelTienditas.modifyTiendita(req.params.idTiendita, req.body)
+    .then(rows => {
+        res.status(201).send({ message: 'Tiendita updated', data: rows})
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error modifying Tiendita', err})
+    })
+}
+
 module.exports = {
     findAllTienditas,
     findOneTiendita,
-    createTiendita
+    createTiendita,
+    modifyTiendita
 }
