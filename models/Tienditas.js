@@ -32,9 +32,30 @@ const modifyTiendita = (tienditaId, body) => {
     .returning('*')
 }
 
+// Borrado Logico
+
+const  softDeleteTiendita = (tienditaId) => {
+    return knex
+    .update({active: false})
+    .from('tienditas')
+    .where ('tiendita_id', tienditaId)
+}
+
+// Borrado hard
+
+const destroyTiendita = (tienditaId) => {
+    return knex
+    .del()
+    .from('tienditas')
+    .where('tiendita_id', tienditaId)
+}
+
+
 module.exports = {
     findAllTienditas,
     findOneTiendita,
     createTiendita,
-    modifyTiendita
+    modifyTiendita,
+    softDeleteTiendita,
+    destroyTiendita
 }

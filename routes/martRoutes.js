@@ -27,5 +27,7 @@ router.get ('/tienditas', tienditasController.findAllTienditas)
 router.get ('/tienditas/:idTiendita', tienditasController.findOneTiendita)
 router.post ('/tienditas', tienditasController.createTiendita)
 router.patch ('/tienditas/:idTiendita', tienditasController.modifyTiendita)
+router.delete ('/tienditas/:idTiendita', tienditasController.softDeleteTiendita)
+router.delete ('/tienditas/destroy/:idTiendita', tienditasController.destroyTiendita)
 
 module.exports = router

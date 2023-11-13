@@ -40,9 +40,32 @@ const modifyTiendita = (req, res) => {
     })
 }
 
+const destroyTiendita = (req, res) => {
+    ModelTienditas.destroyTiendita(req.params.idTiendita)
+    .then(row => {
+        res.status(204).send()
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error Destroy One Tiendita'})
+    })
+}
+
+const softDeleteTiendita = (req, res) => {
+    ModelTienditas.softDeleteTiendita(req.params.idTiendita)
+    .then(row => {
+        res.status(204).send()
+    })
+    .catch (err => {
+        res.status(400).send({message:'Error softDelete one Tiendita'})
+        //console.log (err)
+    })
+}
+
 module.exports = {
     findAllTienditas,
     findOneTiendita,
     createTiendita,
-    modifyTiendita
+    modifyTiendita,
+    softDeleteTiendita,
+    destroyTiendita
 }
